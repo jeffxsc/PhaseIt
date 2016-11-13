@@ -1,0 +1,31 @@
+def possible_at_phase_x(x, course):
+    2016_impossible = 2016.wl.phase_x >= 0.2 * 2016.course.wlcap and 2016.enroll >= 2016.cap
+    2015_impossible = 2015.wl.phase_x >= 0.2 * 2015.course.wlcap and 2015.enroll >= 2015.cap
+    2014_impossible = 2014.wl.phase_x >= 0.2 * 2014.course.wlcap and 2014.enroll >= 2014.cap
+
+    chance = 0
+    impossible = [2016_impossible, 2015_impossible, 2014_impossible]
+
+    if impossible = [True, True, True]:
+        chance = 0
+        return False
+    elif impossible = [True, True, False] or [True, False, True] or [False, True, True]:
+        chance = 0.5
+        return False
+    elif impossible = [False, False, False]:
+        chance = 1
+        return True
+    else:
+        chance = 0.75
+        return True
+
+
+def return_phase_x(course):
+    if 2017.course.enroll >= 2017.course.cap:
+        return 'Phase 1'
+    elif possible_at_phase_x(2, course):
+        if not possible_at_phase_x(3, course):
+            return 'Phase 2'
+        return 'Adjustment Period'
+    elif not possible_at_phase_x(2, course):
+        return 'Phase 1'
