@@ -421,6 +421,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9H3U8CL9B8;
 				INFOPLIST_FILE = PhaseIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Berkly.PhaseIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,6 +435,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9H3U8CL9B8;
 				INFOPLIST_FILE = PhaseIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Berkly.PhaseIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,6 +520,7 @@
 				A8864F571DD7D648004E553D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8864F581DD7D648004E553D /* Build configuration list for PBXNativeTarget "PhaseItTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +529,7 @@
 				A8864F5A1DD7D648004E553D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8864F5B1DD7D648004E553D /* Build configuration list for PBXNativeTarget "PhaseItUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +538,7 @@
 				A8864F5D1DD7D648004E553D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
