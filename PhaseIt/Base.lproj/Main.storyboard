@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Course Search-->
+        <!--Course Search View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="PhaseIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="Course Search View Controller" customClass="CourseSearchViewController" customModule="PhaseIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2u-Wy-let">
-                                <rect key="frame" x="42.5" y="513" width="290" height="55"/>
+                                <rect key="frame" x="42.5" y="562" width="290" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="Q3r-2y-SZO"/>
                                     <constraint firstAttribute="height" constant="55" id="rTZ-8X-b0F"/>
@@ -31,9 +31,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Phase this course!"/>
                                 <connections>
-                                    <segue destination="hsZ-8B-bSR" kind="popoverPresentation" popoverAnchorView="q2u-Wy-let" id="aXh-KR-Et4">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="phaseThisCourse:" destination="9pv-A4-QxB" eventType="touchUpInside" id="v1C-to-3Mx"/>
+                                    <segue destination="hsZ-8B-bSR" kind="show" identifier="segueTest" id="aXh-KR-Et4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Phase a course" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
@@ -132,15 +131,20 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Course Search" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="courseNumberField" destination="csT-OV-sOd" id="mta-vB-tax"/>
+                        <outlet property="departmentField" destination="Aa9-Pj-fMQ" id="kpA-tY-tXb"/>
+                        <outlet property="resevationSelector" destination="LVI-nQ-gkN" id="ysG-ea-lEL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="GV8-Zg-rFN">
             <objects>
-                <viewController id="hsZ-8B-bSR" sceneMemberID="viewController">
+                <viewController id="hsZ-8B-bSR" userLabel="Result View Controller" customClass="ResultViewController" customModule="PhaseIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kif-NI-vhE"/>
                         <viewControllerLayoutGuide type="bottom" id="eHh-6b-HXO"/>
@@ -178,7 +182,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kfY-6o-7Fy" userLabel="Super Stack View">
-                                <rect key="frame" x="36" y="160" width="303" height="102"/>
+                                <rect key="frame" x="36" y="160.5" width="303" height="102"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmr-h3-R56" userLabel="Phase I Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="24"/>
@@ -239,9 +243,12 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-Bj-jVb">
-                                <rect key="frame" x="41" y="531" width="293" height="36"/>
+                                <rect key="frame" x="41" y="470" width="293" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add course to Planner"/>
+                                <connections>
+                                    <segue destination="aw4-Hd-f0v" kind="show" id="LuS-pZ-7gM"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GUI-kg-BUd">
                                 <rect key="frame" x="36" y="312.5" width="303" height="63"/>
@@ -260,6 +267,16 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aY-4c-YGy">
+                                <rect key="frame" x="41" y="531" width="293" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Search a different course"/>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="popoverPresentation" popoverAnchorView="1aY-4c-YGy" id="g65-Rs-mhs">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -269,48 +286,150 @@
                             <constraint firstAttribute="trailingMargin" secondItem="kfY-6o-7Fy" secondAttribute="trailing" constant="20" id="FMj-ih-Tkq"/>
                             <constraint firstItem="Kyn-Bj-jVb" firstAttribute="leading" secondItem="lcm-we-9uN" secondAttribute="leadingMargin" constant="25" id="Qqd-zP-LUY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bYK-pc-VXY" secondAttribute="trailing" constant="20" id="RTf-lR-vS0"/>
+                            <constraint firstItem="1aY-4c-YGy" firstAttribute="top" secondItem="Kyn-Bj-jVb" secondAttribute="bottom" constant="25" id="TWV-if-OXJ"/>
                             <constraint firstItem="kfY-6o-7Fy" firstAttribute="top" secondItem="bYK-pc-VXY" secondAttribute="bottom" constant="44" id="UPf-0r-cmq"/>
                             <constraint firstItem="kfY-6o-7Fy" firstAttribute="leading" secondItem="lcm-we-9uN" secondAttribute="leadingMargin" constant="20" id="afb-Qn-e6t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kyn-Bj-jVb" secondAttribute="trailing" constant="25" id="bt0-AI-VQU"/>
                             <constraint firstItem="bYK-pc-VXY" firstAttribute="leading" secondItem="lcm-we-9uN" secondAttribute="leadingMargin" constant="20" id="gY0-Av-l0e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1aY-4c-YGy" secondAttribute="trailing" constant="25" id="j2T-51-yHg"/>
                             <constraint firstItem="bYK-pc-VXY" firstAttribute="top" secondItem="kif-NI-vhE" secondAttribute="bottom" constant="25" id="jPf-KE-Btg"/>
-                            <constraint firstItem="eHh-6b-HXO" firstAttribute="top" secondItem="Kyn-Bj-jVb" secondAttribute="bottom" constant="100" id="pGQ-2a-UVi"/>
+                            <constraint firstItem="eHh-6b-HXO" firstAttribute="top" secondItem="1aY-4c-YGy" secondAttribute="bottom" constant="100" id="p9U-Hv-8YR"/>
+                            <constraint firstItem="1aY-4c-YGy" firstAttribute="leading" secondItem="lcm-we-9uN" secondAttribute="leadingMargin" constant="25" id="pzP-qK-Kd6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="departmentOut" destination="kDR-uO-Fvf" id="Jha-al-Kkm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mme-6q-6W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="-321.58920539730138"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="9b2-FK-Esr">
+            <objects>
+                <viewController id="aw4-Hd-f0v" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lkD-TS-vvX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sxw-bI-F1W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6rd-Zr-ndQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Cng-x3-Nmp">
+                                <rect key="frame" x="36" y="328" width="303" height="66.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xO1-2f-rbj">
+                                        <rect key="frame" x="57.5" y="0.0" width="188.5" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1n-BE-tlq">
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="220" verticalHuggingPriority="251" text="Course #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jL8-1T-qIA">
+                                                <rect key="frame" x="106.5" y="0.0" width="82" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has been added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-pg-6qc">
+                                        <rect key="frame" x="14" y="40" width="275" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8V1-pg-6qc" firstAttribute="leading" secondItem="Cng-x3-Nmp" secondAttribute="leading" constant="14" id="bHY-lR-dOz"/>
+                                    <constraint firstAttribute="trailing" secondItem="8V1-pg-6qc" secondAttribute="trailing" constant="14" id="rDL-F1-jzq"/>
+                                </constraints>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="GFN-FJ-Za3">
+                                <rect key="frame" x="126" y="171" width="123" height="123"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="Mz4-2b-RWO"/>
+                                    <constraint firstAttribute="height" constant="123" id="RRO-IE-Y2q"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcE-pm-jzq">
+                                <rect key="frame" x="41" y="465" width="293" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Search another course"/>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="popoverPresentation" popoverAnchorView="IcE-pm-jzq" id="f9j-hK-7TG">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLD-Cx-ews">
+                                <rect key="frame" x="41" y="531" width="293" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="View Planner"/>
+                                <connections>
+                                    <segue destination="8rJ-Kc-sve" kind="popoverPresentation" popoverAnchorView="vLD-Cx-ews" id="uvU-Fo-hv4">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vLD-Cx-ews" secondAttribute="trailing" constant="25" id="2X1-d2-hi0"/>
+                            <constraint firstItem="vLD-Cx-ews" firstAttribute="leading" secondItem="6rd-Zr-ndQ" secondAttribute="leadingMargin" constant="25" id="2hk-bT-yUj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GFN-FJ-Za3" secondAttribute="trailing" constant="110" id="3ys-74-ke5"/>
+                            <constraint firstItem="GFN-FJ-Za3" firstAttribute="top" secondItem="lkD-TS-vvX" secondAttribute="bottom" constant="151" id="4P8-qi-CXi"/>
+                            <constraint firstItem="vLD-Cx-ews" firstAttribute="top" secondItem="IcE-pm-jzq" secondAttribute="bottom" constant="30" id="KcZ-zs-8ND"/>
+                            <constraint firstItem="Cng-x3-Nmp" firstAttribute="top" secondItem="GFN-FJ-Za3" secondAttribute="bottom" constant="34" id="Roq-Ll-Mly"/>
+                            <constraint firstItem="Sxw-bI-F1W" firstAttribute="top" secondItem="vLD-Cx-ews" secondAttribute="bottom" constant="100" id="Sf7-sP-7sn"/>
+                            <constraint firstItem="GFN-FJ-Za3" firstAttribute="leading" secondItem="6rd-Zr-ndQ" secondAttribute="leadingMargin" constant="110" id="UvY-y1-BO9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cng-x3-Nmp" secondAttribute="trailing" constant="20" id="Zwd-la-11C"/>
+                            <constraint firstItem="IcE-pm-jzq" firstAttribute="leading" secondItem="6rd-Zr-ndQ" secondAttribute="leadingMargin" constant="25" id="dVz-9A-NSZ"/>
+                            <constraint firstItem="Cng-x3-Nmp" firstAttribute="leading" secondItem="6rd-Zr-ndQ" secondAttribute="leadingMargin" constant="20" id="nAq-qp-3z4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IcE-pm-jzq" secondAttribute="trailing" constant="25" id="xDq-Zc-cxC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zag-lK-R7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="-321.58920539730138"/>
+        </scene>
         <!--Course Added-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="PhaseIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jo4-60-HHO">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Sa-AN-Nlg"/>
+                        <viewControllerLayoutGuide type="bottom" id="gXp-2o-Uhs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nNY-pT-nUc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Under Construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fI-P7-ceF">
+                                <rect key="frame" x="47" y="244" width="281" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZII-W7-6xz" userLabel="Course 1">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZII-W7-6xz" id="qOS-ae-kca">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
+                    </view>
                     <tabBarItem key="tabBarItem" title="Course Added" image="second" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--View Controller-->
+        <!--User Info View Controller-->
         <scene sceneID="KlV-xZ-pXf">
             <objects>
-                <viewController id="Rf3-8N-6II" sceneMemberID="viewController">
+                <viewController id="Rf3-8N-6II" userLabel="User Info View Controller" customClass="UserInfoViewController" customModule="PhaseIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1g7-N0-52t"/>
                         <viewControllerLayoutGuide type="bottom" id="HNB-0D-UlK"/>
@@ -352,7 +471,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n7q-bb-qGv">
-                                                <rect key="frame" x="143" y="0.0" width="100" height="29"/>
+                                                <rect key="frame" x="143" y="-1" width="100" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="bWd-3V-yB4"/>
                                                 </constraints>
@@ -390,6 +509,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="I'm ready to phase it"/>
                                 <connections>
+                                    <action selector="calculateChance:" destination="Rf3-8N-6II" eventType="touchUpInside" id="NaP-X0-TY8"/>
                                     <segue destination="49e-Tb-3d3" kind="popoverPresentation" popoverAnchorView="hwi-w3-wb0" id="FvE-wP-Uu7">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -409,6 +529,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="g2f-mY-ymz" secondAttribute="trailing" constant="13" id="uqc-zk-lkc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="declaredSelector" destination="n7q-bb-qGv" id="32o-Rl-e7d"/>
+                        <outlet property="majorField" destination="GZz-Yd-S1l" id="eZE-rI-NPC"/>
+                        <outlet property="phaseITime" destination="QoI-3t-VDc" id="IcF-qR-fKa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nuv-97-oRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -435,7 +560,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check" width="600" height="600"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="g65-Rs-mhs"/>
+        <segue reference="uvU-Fo-hv4"/>
+    </inferredMetricsTieBreakers>
 </document>
